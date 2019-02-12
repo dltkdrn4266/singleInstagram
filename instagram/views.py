@@ -7,37 +7,37 @@ from rest_framework.decorators import api_view
 
 class PostView(viewsets.ModelViewSet):
     queryset = Post.objects.all()
-    serializers_class = PostSerializer
+    serializer_class = PostSerializer
     permission_classes = (permissions.IsAuthenticated,)
 
-    def perform_create(self, serializers):
-        serializers.save(user=self.request.user)
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
     def get_serializer_class(self):
         if self.request.user.is_staff:
             return PostSerializer
 
-    @api_view(['GET', 'POST'])
-    def get_post_list(request):
-        if request.method == 'GET':
-            serializers = PostSerializer(queryset, many=True)
-            return Response(serializers.data)
+#     def get(self, request, format=None):
+#         posts = Post.objects.all()
+#         serializers = PostSerializer(queryset, many=True)
+#         return Response(serializers.data)
 
-        elif request.method == 'POST':
-            serializers = PostSerializer(data=request.data)
-            if serializers.is_vaild():
-                serializers.save()
-                return Response(serializers.data, status=status.HTTP_201_CREATED)
-            return Response(serializers.error, status=status.HTTP_400_BAD_REQUEST)
+#     def post(self, request, format=None):
+#         serializers = PostSerializer(data=request.data)
+#         if serializers.is_vaild():
+#             serializers.save()
+#             return Response(serializers.data, status=status.HTTP_201_CREATED)
+#         return Response(serializers.error, status=status.HTTP_400_BAD_REQUEST)
     
-    @api_view(['DELETE'])
-    def post_detail(request):
-        try:
-            post = Post.objects.get(pk=pk)
-        except Post.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-        
-        if request.method == 'DELETE':
-            post.delete()
-            return Response(status=status.HTTP_204_NO_CONTENT)
+# class PostDetail(viewsets.ModelViewSet):
+#     def get_object(self, pk):
+#         try:
+#             post = Post.objects.get(pk=pk)
+#         except Post.DoesNotExist:
+#             raise Http404
+
+#     def delete(self, request, pk, format=None):
+#         post = self.get_object(pk)
+#         post.delete()
+#         return Response(status=status.HTTP_204_NO_CONTENT)
 
