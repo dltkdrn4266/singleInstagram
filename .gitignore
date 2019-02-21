@@ -4,5 +4,3 @@
 media/
 
 instagram/__pycache__/
-
-db\.sqlite3
