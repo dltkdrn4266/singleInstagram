@@ -2,3 +2,5 @@
 *.pyc
 
 media/
+
+instagram/__pycache__/
