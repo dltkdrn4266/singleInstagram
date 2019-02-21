@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    photos = models.ImageField(upload_to='/media/',default='default.jpg',height_field=None,width_field=None,max_length=100000)
+    photos = models.ImageField(upload_to='../media/',default='default.jpg',height_field=None,width_field=None,max_length=100000)
     content = models.TextField(blank=True)
     like = models.BooleanField(default=False,blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
