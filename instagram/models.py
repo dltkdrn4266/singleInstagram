@@ -17,4 +17,11 @@ class Comment(models.Model):
     contenet = models.TextField()
     cretaed_at = models.DateTimeField(auto_now_add=True)
 
+class FileUploader(models.model):
+    file = models.fileField()
+    name = models.CharField(max_length=100)
+    upload_date = models.DateTimeField(auto_now=True, db_index=True)
+    owner = models.ForeignKey('auth.User', related_name='uploaded_files')
+    size = models.IntegerField(default=0)
+
     
