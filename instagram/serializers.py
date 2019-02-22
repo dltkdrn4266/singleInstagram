@@ -11,12 +11,13 @@ class UserSerializer(serializers.ModelSerializer):
 
 class PostSerializer(serializers.HyperlinkedModelSerializer):
     user = UserSerializer(read_only=True)
-    # photos = serializers.ImageField(use_url=True)
+    photos = serializers.ImageField(use_url=True)
     class Meta:
         model = Post
         fields = (
             'id',
             'user',
+            'photos',
             'like',
             'content',
             'created_at',
