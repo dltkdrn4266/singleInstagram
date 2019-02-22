@@ -43,7 +43,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class PostSerializer(serializers.HyperlinkedModelSerializer):
     user = UserSerializer(read_only=True)
-    # photos = Base64ImageField(max_length=None, use_url=True,)
+    photos = serializers.ImageField(use_url=True)
     class Meta:
         model = Post
         fields = (
