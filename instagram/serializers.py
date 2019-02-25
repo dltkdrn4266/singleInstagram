@@ -40,7 +40,7 @@ class FileUploaderSerializer(serializers.ModelSerializer):
     class Meta:
         model = FileUploader
         fiedls = (
-            'file',
+            'fileT',
             'name',
             'upload_date',
             'size'
@@ -49,8 +49,8 @@ class FileUploaderSerializer(serializers.ModelSerializer):
     
     def validate(self, validated_data):
         validated_data['owner'] = self.context['request'].user
-        validated_data['name'] = os.path.splitext(validated_data['file'].name)[0]
-        validated_data['size'] = validated_data['file'].size
+        validated_data['name'] = os.path.splitext(validated_data['fileT'].name)[0]
+        validated_data['size'] = validated_data['fileT'].size
 
         return validated_data
 
