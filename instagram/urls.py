@@ -1,6 +1,6 @@
 from django.conf.urls import url, include
 from rest_framework.urlpatterns import format_suffix_patterns
-from .views import PostView, FileUploaderViewSet
+from .views import PostView
 from instagram import views
 from django.urls import path
 
@@ -16,14 +16,20 @@ post_detail = PostView.as_view({
     'delete': 'destroy'
 })
 
-photo_list = FileUploaderViewSet.as_view({
-    'post': 'create',
-    'get' : 'list'
-})
+# photo_list = FileUploaderViewSet.as_view({
+#     'post': 'create',
+#     'get' : 'list'
+# })
+
+# photo_detail = FileUploaderViewSet.as_view({
+#     'get': 'retrieve',
+#     'put': 'update',
+#     'patch': 'partial_update',
+#     'delete': 'destroy'
+# })
 
 urlpatterns = format_suffix_patterns([
     path('auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('posts/', post_list, name='post_list'),
     path('posts/<int:pk>/', post_detail, name='post_detail'),
-    path('photos/', photo_list, name='photo_list')
 ])
