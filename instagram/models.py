@@ -12,13 +12,8 @@ class Post(models.Model):
     #     return '[{}] {}'.format(self.user.username, self.title)
 
 class Comment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    contenet = models.TextField()
-    cretaed_at = models.DateTimeField(auto_now_add=True)
-
-# class Image(models.Model):
-#     user = models.ForeignKey('auth.User',on_delete=models.CASCADE)
-#     image = models.ImageField()
-
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
     
