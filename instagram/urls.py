@@ -11,7 +11,6 @@ post_list = PostView.as_view({
 
 post_detail = PostView.as_view({
     'get': 'retrieve',
-    'put': 'update',
     'patch': 'partial_update',
     'delete': 'destroy'
 })
@@ -19,6 +18,11 @@ post_detail = PostView.as_view({
 comment_list = CommentView.as_view({
     'post': 'create',
     'get': 'list'
+})
+
+comment_detail = CommentView.as_view({
+    'get': 'retrieve',
+    'delete': 'destroy'
 })
 
 urlpatterns = format_suffix_patterns([
