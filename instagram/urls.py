@@ -30,4 +30,5 @@ urlpatterns = format_suffix_patterns([
     path('posts/', post_list, name='post_list'),
     path('posts/<int:pk>/', post_detail, name='post_detail'),
     path('comments/', comment_list, name='comment_list'),
+    path('comments/<int:pk>/', comment_detail, name='comment_detail'),
 ])
