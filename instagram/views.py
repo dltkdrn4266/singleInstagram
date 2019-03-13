@@ -23,6 +23,9 @@ class CommentView(viewsets.ModelViewSet):
     serializer_class = CommentSerializer
     permission_classes = (permissions.IsAuthenticated,)
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
     def get_serializer_class(self):
         if self.request.user.is_staff:
             return CommentSerializer

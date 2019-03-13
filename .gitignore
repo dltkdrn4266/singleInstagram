@@ -4,3 +4,6 @@
 media/
 
 instagram/__pycache__/
+
+myvenv/
+\.vscode/settings\.json
