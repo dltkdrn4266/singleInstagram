@@ -1,9 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.gis.geos import Point
+from location_field.models.spatial import LocationField
+
 
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     photos = models.ImageField(default='default.jpg')
+    photolocation = LocationField(based_fields=['photos'], zoom=7, default=Point(1.0,1.0))
     content = models.TextField(blank=True)
     like = models.BooleanField(default=False,blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
