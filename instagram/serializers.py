@@ -51,6 +51,8 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
             'id',
             'user',
             'photos',
+            'latitude',
+            'longitude',
             'like',
             'content',
             'created_at',
