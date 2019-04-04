@@ -7,8 +7,8 @@ from django.db.models import Manager as GeoManager
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     photos = models.ImageField(default='default.jpg')
-    latitude = models.CharField(max_length=100)
-    longitude = models.CharField(max_length=100)
+    latitude = models.DecimalField(max_digits=10,decimal_places=10)
+    longitude = models.DecimalField(max_digits=10,decimal_places=10)
     content = models.TextField(blank=True)
     like = models.BooleanField(default=False,blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
