@@ -50,6 +50,7 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
     photos = Base64ImageField(
         max_length=None, use_url=True,
     )
+    gps = MarkerGpsSerializer()
     class Meta:
         model = Post
         fields = (
