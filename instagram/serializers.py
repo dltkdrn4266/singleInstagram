@@ -43,7 +43,7 @@ class Base64ImageField(serializers.ImageField):
 class MarkerGpsSerializer(serializers.ModelSerializer):
     class Meta:
         model = MarkerGps
-        fields = ('latitude','longitude')
+        fields = ('id','latitude','longitude')
 
 class PostSerializer(serializers.HyperlinkedModelSerializer):
     user = UserSerializer(read_only=True)
