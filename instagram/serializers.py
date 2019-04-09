@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Post, Comment
+from .models import Post, Comment, MarkerGps
 from django.contrib.auth.models import User
 import os
 
@@ -40,19 +40,24 @@ class Base64ImageField(serializers.ImageField):
 
         return extension
 
+class MarkerGpsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MarkerGps
+        fields = ('latitude','longitude')
+
 class PostSerializer(serializers.HyperlinkedModelSerializer):
     user = UserSerializer(read_only=True)
     photos = Base64ImageField(
         max_length=None, use_url=True,
     )
+    gps = MarkerGpsSerializer()
     class Meta:
         model = Post
         fields = (
             'id',
             'user',
             'photos',
-            'latitude',
-            'longitude',
+            'gps',
             'like',
             'content',
             'created_at',
