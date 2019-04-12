@@ -2,14 +2,16 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class MarkerGps(models.Model):
-    latitude = models.FloatField()
-    longitude = models.FloatField()
+# class MarkerGps(models.Model):
+#     latitude = models.FloatField()
+#     longitude = models.FloatField()
 
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     photos = models.ImageField(default='default.jpg')
-    gps = models.ForeignKey(MarkerGps, on_delete=models.CASCADE, blank=True, null=True)
+    latitude = models.FloatField()
+    longitude = models.FloatField()
+    # gps = models.ForeignKey(MarkerGps, on_delete=models.CASCADE, blank=True, null=True)
     content = models.TextField(blank=True)
     like = models.BooleanField(default=False,blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
