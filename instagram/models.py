@@ -9,8 +9,8 @@ from django.contrib.auth.models import User
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     photos = models.ImageField(default='default.jpg')
-    latitude = models.FloatField()
-    longitude = models.FloatField()
+    latitude = models.FloatField(blank=True)
+    longitude = models.FloatField(blank=True)
     # gps = models.ForeignKey(MarkerGps, on_delete=models.CASCADE, blank=True, null=True)
     content = models.TextField(blank=True)
     like = models.BooleanField(default=False,blank=True)
