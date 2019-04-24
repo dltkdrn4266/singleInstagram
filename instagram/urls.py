@@ -11,6 +11,7 @@ post_list = PostView.as_view({
 
 post_detail = PostView.as_view({
     'get': 'retrieve',
+    'put': 'update',
     'patch': 'partial_update',
     'delete': 'destroy'
 })
