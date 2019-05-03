@@ -47,6 +47,7 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
     photos = Base64ImageField(
         max_length=None, use_url=True,
     )
+    created_at = serializers.DateTimeField(format="%Y-%m-%dT%H:%M:%S")
     class Meta:
         model = Post
         fields = (
