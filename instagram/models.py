@@ -14,7 +14,7 @@ class Post(models.Model):
     # gps = models.ForeignKey(MarkerGps, on_delete=models.CASCADE, blank=True, null=True)
     content = models.TextField(blank=True)
     like = models.BooleanField(default=False,blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(format="%Y-%m-%dT%H:%M:%S",auto_now_add=True)
 
     # def __str__(self):
     #     return '[{}] {}'.format(self.user.username, self.title)
