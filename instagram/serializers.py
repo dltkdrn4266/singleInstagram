@@ -59,8 +59,6 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
             'longitude',
             'like',
             'content',
-            'created_at',
-            'filter_created_at'
         )
         read_only_fields = ('created_at',)
     
