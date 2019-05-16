@@ -47,8 +47,7 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
     photos = Base64ImageField(
         max_length=None, use_url=True,
     )
-    created_at = serializers.DateTimeField(format="%Y-%m-%dT%H:%M:%S")
-    filter_created_at = serializers.DateTimeField(format="%Y-%m-%d")
+    created_at = serializers.DateTimeField(format="%Y-%m-%d")
     class Meta:
         model = Post
         fields = (
@@ -60,9 +59,8 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
             'like',
             'content',
             'created_at',
-            'filter_created_at'
         )
-        read_only_fields = ('created_at','filter_created_at')
+        read_only_fields = ('created_at',)
     
 class CommentSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
