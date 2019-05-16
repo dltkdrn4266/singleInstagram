@@ -19,6 +19,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
+REST_FRAMEWORK = {
+    'DATETIME_FORMAT': "%Y-%m-%d",
+}
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '283!c$zc-d(v@%mt*c^)s76n8giua+#c@00&)5irf2n!%vvr&6'
 
